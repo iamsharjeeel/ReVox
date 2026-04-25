@@ -13,9 +13,10 @@ export default async function handler(req, res) {
       user_type: 'Location'
     }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
 
-    // Send token back to your Frontend via URL params
     const { access_token, locationId } = response.data;
-    res.redirect(`YOUR_AI_STUDIO_URL?token=${access_token}&locationId=${locationId}`);
+    
+    // Redirects to your specific VibePreview link
+    res.redirect(`https://marketflow-dashboard.vibepreview.com/?token=${access_token}&locationId=${locationId}`);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
